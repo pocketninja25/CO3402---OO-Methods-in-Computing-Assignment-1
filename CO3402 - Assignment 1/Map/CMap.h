@@ -87,6 +87,32 @@ public:
 		m_ArrayTop++;
 	}
 
+	bool remove(TKey iKey, TData &removedData)	//Pop the data that matches the key and pass it to the caller through removedData reference parameter
+	{
+		for (int i = 0; i < m_ArrayTop; i++)
+		{
+			if (m_Array[i].item1 == iKey)
+			{
+				//Populate retrieval data
+				removedData = m_Array[i].item2;
+				
+				//Remove the data from the m_Array
+				m_ArrayTop--;	//Reduce the array size
+				m_Array[i] = m_Array[m_ArrayTop];	//Put the item currently on the top of the array in the empty space
+
+				return true;	//Found, shortcut out of the function
+			}
+		}
+		//Return either found item or item passed here if item not found
+		return false;	//Could not find
+	}
+
+	bool remove(TKey iKey)	//Version of pop that does not return the data removed by the function
+	{
+		float temp;
+		return remove(iKey, temp);
+	}
+
 	//Find the object with the key iKey, if the object is not found then construct a default TData object paired with the provided key
 	TData& find(TKey iKey)
 	{

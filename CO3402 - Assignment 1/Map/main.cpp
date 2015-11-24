@@ -50,6 +50,18 @@ int main()
 	cout << myMap['2'] << endl;
 	cout << myMap['4'] << endl;
 	cout << endl;
+
+	myMap.remove('3');
+	
+	cout << myMap.find('1') << endl;
+	cout << myMap['5'] << endl;
+	cout << myMap['3'] << endl;
+	cout << myMap['2'] << endl;
+	cout << myMap['4'] << endl;
+	cout << endl;
+
+
+	//Figure out how to guarantee the operators used within the class are supported by the key and the data
 	
 	system("pause");
 
