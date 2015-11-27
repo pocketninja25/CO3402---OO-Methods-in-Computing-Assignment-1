@@ -16,49 +16,65 @@ using std::string;
 	using std::make_pair;
 	#define MAP map
 #endif
-
+	
 int main()
 {
 	MAP<char, float> myMap = MAP<char, float>();
 
-	//Output fresh items
-	cout <<	myMap.find('1') << endl;
-	cout <<	myMap['4'] << endl;
-	cout <<	myMap['3'] << endl;
-	cout <<	myMap['2'] << endl;
-	cout <<	myMap['5'] << endl;
-	cout << endl;
 
-	//Assign data to items
+	////Output fresh items
+	//cout <<	myMap.find('1') << endl;
+	//cout <<	myMap['4'] << endl;
+	//cout <<	myMap['3'] << endl;
+	//cout <<	myMap['2'] << endl;
+	//cout <<	myMap['5'] << endl;
+	//cout << endl;
+	//
+	////Assign data to items
+	//myMap['1'] = 1.1f;
+	//myMap['4'] = 4.4f;
+	//myMap['3'] = 3.3f;
+	//myMap['2'] = 2.2f;
+	//myMap['5'] = 5.5f;
+	//
+	////Reassign data to items
+	//myMap['1'] = 2.2f;
+	//myMap['2'] = 3.3f;
+	//myMap['3'] = 4.4f;
+	//myMap['4'] = 5.5f;
+	//myMap['5'] = 6.6f;
+	//
+	////Output reassigned values
+	//cout << myMap.find('1') << endl;
+	//cout << myMap['5'] << endl;
+	//cout << myMap['3'] << endl;
+	//cout << myMap['2'] << endl;
+	//cout << myMap['4'] << endl;
+	//cout << endl;
+
 	myMap['1'] = 1.1f;
-	myMap['4'] = 4.4f;
-	myMap['3'] = 3.3f;
 	myMap['2'] = 2.2f;
+	myMap['3'] = 3.3f;
+	myMap['4'] = 4.4f;
 	myMap['5'] = 5.5f;
+	myMap['6'] = 6.6f;
 
-	//Reassign data to items
-	myMap['1'] = 2.2f;
-	myMap['2'] = 3.3f;
-	myMap['3'] = 4.4f;
-	myMap['4'] = 5.5f;
-	myMap['5'] = 6.6f;
-
-	//Output reassigned values
-	cout << myMap.find('1') << endl;
-	cout << myMap['5'] << endl;
-	cout << myMap['3'] << endl;
-	cout << myMap['2'] << endl;
-	cout << myMap['4'] << endl;
-	cout << endl;
-
-	myMap.remove('3');
+	cout << "ITERATOR TEST" << endl;
+	for (CIterator<char, float> i = myMap.IterBegin(); i != myMap.IterEnd(); i++)
+	{
+		cout << (*i).item1 << " " << (*i).item2 << endl;
+		
+	}
 	
-	cout << myMap.find('1') << endl;
-	cout << myMap['5'] << endl;
-	cout << myMap['3'] << endl;
-	cout << myMap['2'] << endl;
-	cout << myMap['4'] << endl;
-	cout << endl;
+
+	//myMap.remove('3');
+	//
+	//cout << myMap.find('1') << endl;
+	//cout << myMap['5'] << endl;
+	//cout << myMap['3'] << endl;
+	//cout << myMap['2'] << endl;
+	//cout << myMap['4'] << endl;
+	//cout << endl;
 
 
 	//Figure out how to guarantee the operators used within the class are supported by the key and the data

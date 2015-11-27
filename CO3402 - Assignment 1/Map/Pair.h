@@ -9,6 +9,8 @@ public:
 
 	TItem1 item1;
 	TItem2 item2;
+
+
 };
 
 template <typename TI1, typename TI2>

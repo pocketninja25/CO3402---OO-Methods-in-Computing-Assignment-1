@@ -1,6 +1,52 @@
 #pragma once
 #include "Pair.h"
 
+template <typename TItem1, typename TItem2>
+class CIterator 	//For this map implementation the iterator is merely a wrapper for the SPair pointer
+{
+	template <typename TKey, typename TData> friend class CMap;
+private:
+	SPair<TItem1, TItem2>* m_Pair;
+
+	CIterator(SPair<TItem1, TItem2> &theItem)
+	{
+		m_Pair = &theItem;
+	}
+
+public:
+	~CIterator()
+	{
+	}
+
+	SPair<TItem1, TItem2> operator*() const	//Dereference operator overload to return the pair item
+	{
+		return *m_Pair;
+	}
+
+	CIterator<TItem1, TItem2>& operator++()
+	{
+		m_Pair++;
+		return *this;
+	}
+
+	CIterator<TItem1, TItem2> operator++(int)
+	{
+		CIterator<TItem1, TItem2> tmp(*this);
+		operator++();
+		return tmp;
+	}
+
+	bool operator==(const CIterator<TItem1, TItem2>& other) 
+	{
+		return (this->m_Pair == other.m_Pair);
+	}
+
+	bool operator!=(const CIterator<TItem1, TItem2>& other)
+	{
+		return (this->m_Pair != other.m_Pair);
+	}
+};
+
 template <typename TKey, typename TData>
 
 class CMap
@@ -15,19 +61,20 @@ public:
 	CMap(int mapSize = 50)
 	{
 		m_ArrayTop = 0;
-		m_ArrayMax = mapSize;		
+		m_ArrayMax = mapSize;
 		m_Array = new SPair<TKey, TData>[m_ArrayMax];
 	}
+	
 	//Map destructor
 	~CMap()
 	{
 		delete[] m_Array;
 	}
+
 	//Override copy constructor to deep copy
-	CMap(const CMap<TKey, TData>& iOriginal)	
+	CMap(const CMap<TKey, TData>& iOriginal)
 	{
 		//Constructs a new object using a copy
-
 		m_ArrayMax = iOriginal->m_ArrayMax;
 		m_ArrayTop = iOriginal->m_ArrayTop;
 		//Allocate new array
@@ -39,6 +86,7 @@ public:
 		}
 
 	}
+
 	CMap& CMap::operator=(const CMap &iOriginal)
 	{
 		//Modifies an existing object using a copy
@@ -66,7 +114,7 @@ public:
 	//Insert an item with the key type TKey and data type TData - use make_pair to construct a pair object
 	void insert(SPair<TKey, TData> iPair)
 	{
-		if(m_ArrayTop >= m_ArrayMax)	//Array full, create new array that is bigger
+		if (m_ArrayTop >= m_ArrayMax)	//Array full, create new array that is bigger
 		{
 			//Construct new array at twice the size
 			int newMax = m_ArrayMax * 2;
@@ -95,7 +143,7 @@ public:
 			{
 				//Populate retrieval data
 				removedData = m_Array[i].item2;
-				
+
 				//Remove the data from the m_Array
 				m_ArrayTop--;	//Reduce the array size
 				m_Array[i] = m_Array[m_ArrayTop];	//Put the item currently on the top of the array in the empty space
@@ -142,4 +190,15 @@ public:
 		return m_ArrayTop;
 	}
 
+	CIterator<TKey, TData> IterBegin()	//Returns an iterator that points at the first (0th) item in the array
+	{
+		return CIterator<TKey, TData>(m_Array[0]);
+	}
+
+	CIterator<TKey, TData> IterEnd()	//Returns an iterator that points 1 item past the final item in the array
+	{
+		return CIterator<TKey, TData>(m_Array[m_ArrayTop]);
+	}
+	
 };
+
