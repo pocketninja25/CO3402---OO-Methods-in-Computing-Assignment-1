@@ -1,6 +1,23 @@
 #pragma once
-#include "Pair.h"
 
+template <typename TItem1, typename TItem2>
+struct SPair	//Structure that stores two public items of the templated types - no functions
+{
+public:
+	TItem1 item1;		//The first item in the pair (Key)
+	TItem2 item2;		//The second item in the pair (Data)
+
+};
+
+template <typename TI1, typename TI2>
+//Used as a pseudo constructor in a similar way to the stl, creates an SPair object and populates it with the passed templated items
+SPair<TI1, TI2> make_pair(TI1 iItem1, TI2 iItem2)
+{
+	SPair<TI1, TI2> newPair;
+	newPair.item1 = iItem1;
+	newPair.item2 = iItem2;
+	return newPair;
+}
 
 template <typename TItem1, typename TItem2>
 class CIterator 	//For this map implementation the iterator is merely a wrapper for the SPair pointer
@@ -87,14 +104,14 @@ public:
 	CMap(const CMap<TKey, TData>& iOriginal)
 	{
 		//Constructs a new object using a copy
-		m_ArrayMax = iOriginal->m_ArrayMax;
-		m_ArrayTop = iOriginal->m_ArrayTop;
+		m_ArrayMax = iOriginal.m_ArrayMax;
+		m_ArrayTop = iOriginal.m_ArrayTop;
 		//Allocate new array
-		m_Array = new SPair<TKey, TData>[iOriginal->m_ArrayMax];
+		m_Array = new SPair<TKey, TData>[iOriginal.m_ArrayMax];
 		//Copy array data from original to copy
 		for (int i = 0; i < m_ArrayTop; i++)
 		{
-			m_Array[i] = iOriginal->m_Array[i];
+			m_Array[i] = iOriginal.m_Array[i];
 		}
 
 	}

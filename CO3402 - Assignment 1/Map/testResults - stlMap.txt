@@ -1,0 +1,97 @@
+STL Map: 
+
+Map Type: int, float
+Insert 5 items
+Input: 1, 1.1
+Input: 2, 2.2
+Input: 3, 3.3
+Input: 4, 4.4
+Input: 5, 5.5
+Current Size: 5
+
+Find 5 items with function Find
+Key: 1 Result: 1.1
+Key: 2 Result: 2.2
+Key: 3 Result: 3.3
+Key: 4 Result: 4.4
+Key: 5 Result: 5.5
+Current Size: 5
+
+Find 5 items with operator[]
+Key: 1 Result: 1.1
+Key: 2 Result: 2.2
+Key: 3 Result: 3.3
+Key: 4 Result: 4.4
+Key: 5 Result: 5.5
+Current Size: 5
+
+Insert the same 5 keys with alternate values 
+Input: 1 Data: 1.1
+Input: 2 Data: 2.2
+Input: 3 Data: 3.3
+Input: 4 Data: 4.4
+Input: 5 Data: 5.5
+Current Size: 5
+
+Find 5 items with function Find
+Key: 1 Result: 1.1
+Key: 2 Result: 2.2
+Key: 3 Result: 3.3
+Key: 4 Result: 4.4
+Key: 5 Result: 5.5
+Current Size: 5
+
+Remove 8 items (3 of which dont exist) with function remove
+Key: 1 Removed: success
+Key: 2 Removed: success
+Key: 3 Removed: success
+Key: 4 Removed: success
+Key: 5 Removed: success
+Key: 6 Removed: fail
+Key: 7 Removed: fail
+Key: 8 Removed: fail
+Current Size: 0
+
+Insert 5 items (with function find)
+Not allowed in stl implementation
+Refill the array using insert instead
+Current Size: 8
+
+Add 3 to the value of 8 items (with function find) where 3 items don't exist
+Not allowed in stl implementation
+Insert 3 new values instead
+Current Size: 8
+
+Use iterator to find key and data of each item
+Key: 1 Value: 1.1
+Key: 2 Value: 2.2
+Key: 3 Value: 3.3
+Key: 4 Value: 4.4
+Key: 5 Value: 5.5
+Key: 6 Value: 6.6
+Key: 7 Value: 7.7
+Key: 8 Value: 8.8
+Current Size: 8
+
+Remove selected items (keys divisible by 3)
+Key: 3 Removed: success
+Key: 6 Removed: success
+Current Size: 6
+
+Use iterator to find key and data of each item
+Key: 1 Value: 1.1
+Key: 2 Value: 2.2
+Key: 4 Value: 4.4
+Key: 5 Value: 5.5
+Key: 7 Value: 7.7
+Key: 8 Value: 8.8
+Current Size: 6
+
+Use clear function to empty the map
+Current Size: 0
+
+Time to add 10,000 items to an empty map
+Time: 1 MilliSeconds 
+Time to add 100,000 items to an empty map
+Time: 14 MilliSeconds 
+

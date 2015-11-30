@@ -10,7 +10,7 @@ using std::ofstream;
 
 //#define ConsoleOut
 
-#include "CMap.h"
+#include "map.h"
 #include <map>
 using std::map;
 	
