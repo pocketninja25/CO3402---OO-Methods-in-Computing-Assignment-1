@@ -40,7 +40,7 @@ public:
 	}
 
 	//Dereference operator, returns the pair m_Pair points to
-	SPair<TItem1, TItem2> operator*() const	//Dereference operator overload to return the pair item
+	const SPair<TItem1, TItem2> operator*() const	//Dereference operator overload to return the pair item
 	{
 		return *m_Pair;
 	}
@@ -82,7 +82,7 @@ private:
 	SPair<TKey, TData>* m_Array;	//The array of data items (using pointer type to allow dynamic reallocation of size by creating new array at runtime)
 	int m_ArrayMax;					//The current amount of maximum items the array can store without reallocating the size of the array
 	int m_ArrayTop;					//The amount of items currently in the array, also can be used to 'point at' the top of the array
-	int m_OriginalMax;
+	int m_OriginalMax;				//The maximum size provided on construction
 
 public:
 	//Create a map of starting size 'mapSize', this is not necessarily the final size of the map, just a starting point, the map will grow in size to accomodate any items over it's current capacity
@@ -117,7 +117,7 @@ public:
 	}
 
 	//Overload assignment operator to ensure the m_Array object is properly deallocated from the copy and recreated from the original
-	CMap& CMap::operator=(const CMap &iOriginal)
+	CMap& operator=(const CMap &iOriginal)
 	{
 		//Modifies an existing object using a copy
 
