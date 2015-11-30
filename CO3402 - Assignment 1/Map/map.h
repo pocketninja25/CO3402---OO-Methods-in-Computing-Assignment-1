@@ -117,7 +117,7 @@ public:
 	}
 
 	//Overload assignment operator to ensure the m_Array object is properly deallocated from the copy and recreated from the original
-	CMap& CMap::operator=(const CMap &iOriginal)
+	CMap& operator=(const CMap &iOriginal)
 	{
 		//Modifies an existing object using a copy
 
